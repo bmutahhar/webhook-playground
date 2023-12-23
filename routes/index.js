@@ -1,5 +1,9 @@
 var express = require("express");
 var router = express.Router();
+const multer = require("multer");
+
+// Set up multer for file handling
+const upload = multer({ dest: "uploads/" }); // This will store files in an 'uploads' folder
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -9,8 +13,9 @@ router.get("/", function (req, res, next) {
   });
 });
 
-router.post("/webhook", (req, res) => {
+router.post("/webhook", upload.any(), (req, res) => {
   console.log("Received data:", req.body);
+  console.log("Received files:", req.files);
 
   // const xmlData = req.body.toString(); // Convert the buffer to a string
   // console.log("Received XML data:", xmlData);

@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(xmlparser());
 
 // Configure body-parser to accept raw XML
-app.use(bodyParser.raw({ type: "application/xml" }));
+app.use(bodyParser.raw({ type: "text/xml" }));
 
 app.use(cookieParser());
 
